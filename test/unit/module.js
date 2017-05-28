@@ -65,10 +65,15 @@ describe('module', () => {
             Worker.addEventListener(0, 'message', ({ data }) => {
                 expect(data.id).to.be.a('number');
 
+                expect(data.params.arrayBuffer).to.be.an.instanceOf(ArrayBuffer);
+                expect(data.params.arrayBuffer.byteLength).to.equal(1024);
+
                 expect(data).to.deep.equal({
                     id: data.id,
                     method: 'locate',
-                    params: { arrayBuffer }
+                    params: {
+                        arrayBuffer: data.params.arrayBuffer
+                    }
                 });
 
                 done();
@@ -91,10 +96,15 @@ describe('module', () => {
             Worker.addEventListener(0, 'message', ({ data }) => {
                 expect(data.id).to.be.a('number');
 
+                expect(data.params.arrayBuffer).to.be.an.instanceOf(ArrayBuffer);
+                expect(data.params.arrayBuffer.byteLength).to.equal(1024);
+
                 expect(data).to.deep.equal({
                     id: data.id,
                     method: 'strip',
-                    params: { arrayBuffer }
+                    params: {
+                        arrayBuffer: data.params.arrayBuffer
+                    }
                 });
 
                 done();
