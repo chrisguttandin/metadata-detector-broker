@@ -4,8 +4,11 @@ describe('module', () => {
 
     let metadataDetector;
 
-    afterEach(() => {
+    afterEach((done) => {
         Worker.reset();
+
+        // @todo This is a optimistic fix to prevent the famous 'Some of your tests did a full page reload!' error.
+        setTimeout(done, 500);
     });
 
     beforeEach(() => {
