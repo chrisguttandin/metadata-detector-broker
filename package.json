@@ -4,8 +4,7 @@
     "url": "https://github.com/chrisguttandin/metadata-detector-broker/issues"
   },
   "dependencies": {
-    "metadata-detector-worker": "^1.0.0",
-    "tslint": "^5.7.0"
+    "metadata-detector-worker": "^1.0.0"
   },
   "description": "The broker which is used by the metadata-detector package.",
   "devDependencies": {
@@ -40,6 +39,7 @@
     "sinon-chai": "^2.13.0",
     "ts-loader": "^2.3.4",
     "tsconfig-holy-grail": "^2.2.23",
+    "tslint": "^5.7.0",
     "tslint-config-holy-grail": "^11.0.0",
     "typescript": "^2.4.2",
     "webpack": "^3.5.5"
