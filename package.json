@@ -4,7 +4,7 @@
     "url": "https://github.com/chrisguttandin/metadata-detector-broker/issues"
   },
   "dependencies": {
-    "metadata-detector-worker": "^1.0.0"
+    "metadata-detector-worker": "^1.0.3"
   },
   "description": "The broker which is used by the metadata-detector package.",
   "devDependencies": {
