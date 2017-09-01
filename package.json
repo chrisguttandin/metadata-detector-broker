@@ -4,6 +4,7 @@
     "url": "https://github.com/chrisguttandin/metadata-detector-broker/issues"
   },
   "dependencies": {
+    "babel-runtime": "^6.26.0",
     "metadata-detector-worker": "^1.0.4"
   },
   "description": "The broker which is used by the metadata-detector package.",
