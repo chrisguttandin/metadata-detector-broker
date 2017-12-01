@@ -1,16 +1,5 @@
+import { addUniqueNumber } from 'fast-unique-numbers';
 import { ILocateRequest, ILocateResponse, IStripRequest, IStripResponse, IWorkerEvent } from 'metadata-detector-worker';
-
-const MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || Math.pow(2, 53) - 1;
-
-const generateUniqueId = (set: Set<number>) => {
-    let id = Math.round(Math.random() * MAX_SAFE_INTEGER);
-
-    while (set.has(id)) {
-        id = Math.round(Math.random() * MAX_SAFE_INTEGER);
-    }
-
-    return id;
-};
 
 export const load = (url: string) => {
     const worker = new Worker(url);
@@ -19,7 +8,7 @@ export const load = (url: string) => {
 
     const locate = (arrayBuffer: ArrayBuffer): Promise<[ number, number ][]> => {
         return new Promise((resolve, reject) => {
-            const id = generateUniqueId(ongoingRecordingRequests);
+            const id = addUniqueNumber(ongoingRecordingRequests);
 
             const onMessage = ({ data }: IWorkerEvent) => {
                 if (data.id === id) {
@@ -43,7 +32,7 @@ export const load = (url: string) => {
 
     const strip = (arrayBuffer: ArrayBuffer): Promise<ArrayBuffer> => {
         return new Promise((resolve, reject) => {
-            const id = generateUniqueId(ongoingRecordingRequests);
+            const id = addUniqueNumber(ongoingRecordingRequests);
 
             const onMessage = ({ data }: IWorkerEvent) => {
                 if (data.id === id) {
