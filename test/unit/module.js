@@ -7,7 +7,7 @@ describe('module', () => {
     afterEach((done) => {
         Worker.reset();
 
-        // @todo This is a optimistic fix to prevent the famous 'Some of your tests did a full page reload!' error.
+        // @todo This is an optimistic fix to prevent the famous 'Some of your tests did a full page reload!' error.
         setTimeout(done, 500);
     });
 
