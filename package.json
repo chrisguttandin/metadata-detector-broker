@@ -12,7 +12,7 @@
     "babel-runtime": "^6.26.0",
     "fast-unique-numbers": "^2.0.3",
     "metadata-detector-worker": "^1.0.26",
-    "tslib": "^1.9.1"
+    "tslib": "^1.9.2"
   },
   "description": "The broker which is used by the metadata-detector package.",
   "devDependencies": {
