@@ -52,8 +52,11 @@ describe('module', () => {
                 self.postMessage(data);
             });`
         ], { type: 'application/javascript' });
+        const url = URL.createObjectURL(blob);
 
-        metadataDetector = load(URL.createObjectURL(blob));
+        metadataDetector = load(url);
+
+        URL.revokeObjectURL(url);
     });
 
     describe('locate()', () => {
