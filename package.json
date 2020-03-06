@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.8.7",
-    "fast-unique-numbers": "^5.0.2",
+    "fast-unique-numbers": "^5.0.3",
     "metadata-detector-worker": "^4.0.2",
     "tslib": "^1.11.1"
   },
