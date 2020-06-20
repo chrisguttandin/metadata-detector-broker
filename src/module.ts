@@ -6,7 +6,7 @@ export const load = (url: string) => {
 
     const ongoingRecordingRequests: Set<number> = new Set();
 
-    const locate = (arrayBuffer: ArrayBuffer): Promise<[ number, number ][]> => {
+    const locate = (arrayBuffer: ArrayBuffer): Promise<[number, number][]> => {
         return new Promise((resolve, reject) => {
             const id = addUniqueNumber(ongoingRecordingRequests);
 
@@ -17,7 +17,7 @@ export const load = (url: string) => {
                     worker.removeEventListener('message', onMessage);
 
                     if (data.error === null) {
-                        resolve((<ILocateResponse> data).result.locations);
+                        resolve((<ILocateResponse>data).result.locations);
                     } else {
                         reject(new Error(data.error.message));
                     }
@@ -26,7 +26,7 @@ export const load = (url: string) => {
 
             worker.addEventListener('message', onMessage);
 
-            worker.postMessage(<ILocateRequest> { id, method: 'locate', params: { arrayBuffer } }, [ arrayBuffer ]);
+            worker.postMessage(<ILocateRequest>{ id, method: 'locate', params: { arrayBuffer } }, [arrayBuffer]);
         });
     };
 
@@ -41,7 +41,7 @@ export const load = (url: string) => {
                     worker.removeEventListener('message', onMessage);
 
                     if (data.error === null) {
-                        resolve((<IStripResponse> data).result.arrayBuffer);
+                        resolve((<IStripResponse>data).result.arrayBuffer);
                     } else {
                         reject(new Error(data.error.message));
                     }
@@ -50,7 +50,7 @@ export const load = (url: string) => {
 
             worker.addEventListener('message', onMessage);
 
-            worker.postMessage(<IStripRequest> { id, method: 'strip', params: { arrayBuffer } }, [ arrayBuffer ]);
+            worker.postMessage(<IStripRequest>{ id, method: 'strip', params: { arrayBuffer } }, [arrayBuffer]);
         });
     };
 

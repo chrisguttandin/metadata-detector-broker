@@ -1,7 +1,6 @@
 import { load } from '../../src/module';
 
 describe('module', () => {
-
     let metadataDetector;
 
     afterEach((done) => {
@@ -12,12 +11,12 @@ describe('module', () => {
     });
 
     beforeEach(() => {
-        Worker = ((OriginalWorker) => { // eslint-disable-line no-global-assign
+        // eslint-disable-next-line no-global-assign
+        Worker = ((OriginalWorker) => {
             const instances = [];
 
             return class ExtendedWorker extends OriginalWorker {
-
-                constructor (url) {
+                constructor(url) {
                     super(url);
 
                     const addEventListener = this.addEventListener;
@@ -32,26 +31,29 @@ describe('module', () => {
                     instances.push(this);
                 }
 
-                static addEventListener (index, ...args) {
+                static addEventListener(index, ...args) {
                     return instances[index].addEventListener(index, ...args);
                 }
 
-                static get instances () {
+                static get instances() {
                     return instances;
                 }
 
-                static reset () {
-                    Worker = OriginalWorker; // eslint-disable-line no-global-assign
+                static reset() {
+                    // eslint-disable-next-line no-global-assign
+                    Worker = OriginalWorker;
                 }
-
             };
         })(Worker);
 
-        const blob = new Blob([
-            `self.addEventListener('message', ({ data }) => {
+        const blob = new Blob(
+            [
+                `self.addEventListener('message', ({ data }) => {
                 self.postMessage(data);
             });`
-        ], { type: 'application/javascript' });
+            ],
+            { type: 'application/javascript' }
+        );
         const url = URL.createObjectURL(blob);
 
         metadataDetector = load(url);
@@ -60,7 +62,6 @@ describe('module', () => {
     });
 
     describe('locate()', () => {
-
         let arrayBuffer;
 
         beforeEach(() => {
@@ -87,11 +88,9 @@ describe('module', () => {
 
             metadataDetector.locate(arrayBuffer);
         });
-
     });
 
     describe('strip()', () => {
-
         let arrayBuffer;
 
         beforeEach(() => {
@@ -118,7 +117,5 @@ describe('module', () => {
 
             metadataDetector.strip(arrayBuffer);
         });
-
     });
-
 });
