@@ -11,7 +11,7 @@
     "dependencies": {
         "@babel/runtime": "^7.23.1",
         "fast-unique-numbers": "^8.0.9",
-        "metadata-detector-worker": "^4.0.67",
+        "metadata-detector-worker": "^4.0.68",
         "tslib": "^2.6.1"
     },
     "description": "The broker which is used by the metadata-detector package.",
