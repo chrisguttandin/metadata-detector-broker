@@ -3,12 +3,7 @@ import { load } from '../../src/module';
 describe('module', () => {
     let metadataDetector;
 
-    afterEach((done) => {
-        Worker.reset();
-
-        // @todo This is an optimistic fix to prevent the famous 'Some of your tests did a full page reload!' error.
-        setTimeout(done, 500);
-    });
+    afterEach(() => Worker.reset());
 
     beforeEach(() => {
         // eslint-disable-next-line no-global-assign
