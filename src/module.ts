@@ -12,10 +12,10 @@ export * from './types/index';
 
 export const wrap: TMetadataDetectorBrokerWrapper = createBroker<IMetadataDetectorBrokerDefinition, TMetadataDetectorWorkerDefinition>({
     locate: ({ call }) => {
-        return (arrayBuffer: ArrayBuffer) => call('locate', { arrayBuffer }, [arrayBuffer]);
+        return (arrayBuffer) => call('locate', { arrayBuffer }, [arrayBuffer]);
     },
     strip: ({ call }) => {
-        return (arrayBuffer: ArrayBuffer) => call('strip', { arrayBuffer }, [arrayBuffer]);
+        return (arrayBuffer) => call('strip', { arrayBuffer }, [arrayBuffer]);
     }
 });
 
