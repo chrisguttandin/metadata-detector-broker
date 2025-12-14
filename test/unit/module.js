@@ -1,3 +1,4 @@
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { load } from '../../src/module';
 
 describe('module', () => {
@@ -63,7 +64,9 @@ describe('module', () => {
             arrayBuffer = new ArrayBuffer(1024);
         });
 
-        it('should send the correct message', (done) => {
+        it('should send the correct message', () => {
+            const { promise, resolve } = Promise.withResolvers();
+
             Worker.addEventListener(0, 'message', ({ data }) => {
                 expect(data.id).to.be.a('number');
 
@@ -78,10 +81,12 @@ describe('module', () => {
                     }
                 });
 
-                done();
+                resolve();
             });
 
             metadataDetector.locate(arrayBuffer);
+
+            return promise;
         });
     });
 
@@ -92,7 +97,9 @@ describe('module', () => {
             arrayBuffer = new ArrayBuffer(1024);
         });
 
-        it('should send the correct message', (done) => {
+        it('should send the correct message', () => {
+            const { promise, resolve } = Promise.withResolvers();
+
             Worker.addEventListener(0, 'message', ({ data }) => {
                 expect(data.id).to.be.a('number');
 
@@ -107,10 +114,12 @@ describe('module', () => {
                     }
                 });
 
-                done();
+                resolve();
             });
 
             metadataDetector.strip(arrayBuffer);
+
+            return promise;
         });
     });
 });
