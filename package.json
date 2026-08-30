@@ -50,6 +50,7 @@
     "main": "build/es5/bundle.js",
     "module": "build/es2019/module.js",
     "name": "metadata-detector-broker",
+    "packageManager": "npm@12",
     "repository": {
         "type": "git",
         "url": "https://github.com/chrisguttandin/metadata-detector-broker.git"
